@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { updatepassword, getpassword } from "../api/index";
+import "./style.css";
 
+// add .catch if fails, display error message "no password with this id"
 function EditPassword(req) {
-  //  make API call w/ id to fetch pw data , apply to state, do not rehash password unless specifically updated
+  //  make API call w/ id to fetch pw data , apply to state,
   // const _id = req.params._id;
   const params = useParams();
   const id = params.id;
@@ -18,7 +20,7 @@ function EditPassword(req) {
   if (!updatePassword) {
     return null;
   }
-
+  // add .catch if fails, display error message "no password with this id"
   const updateFunction = () => {
     updatepassword(updatePassword).then(() => {
       navigate("/homepage");
@@ -26,7 +28,7 @@ function EditPassword(req) {
     });
   };
   return (
-    <div>
+    <div className="container">
       <link rel="stylesheet" type="text/css" href="/style.css" />
       <h2 className="main">Edit your Password</h2>
 
@@ -76,11 +78,11 @@ function EditPassword(req) {
           name="password"
           className="form-control"
           defaultValue={updatePassword.password}
-          onChange={(e) => {
-            const password = updatePassword;
-            password.password = e.target.value;
-            setUpdatePassword(password);
-          }}
+          // onChange={(e) => {
+          //   const password = updatePassword;
+          //   password.password = e.target.value;
+          //   setUpdatePassword(password);
+          // }}
         />
       </div>
 

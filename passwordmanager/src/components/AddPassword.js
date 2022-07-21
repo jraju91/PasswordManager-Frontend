@@ -1,62 +1,106 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { createpassword } from "../api/index";
+import "./style.css";
 
 function AddPassword() {
   const navigate = useNavigate();
+  const user = JSON.parse(localStorage.getItem("user"));
+
   const [newPassword, setNewPassword] = useState({
     nameofwebsite: "",
     username: "",
     password: "",
     linktoreset: "",
+    userId: user,
   });
-  createpassword(newPassword).then((response) => {
-    setNewPassword(response);
-    console.log(response);
-  });
+  const createFunction = () => {
+    createpassword(newPassword).then((response) => {
+      console.log("hello");
+      navigate("/homepage");
+    });
+  };
   return (
-    <div>
+    <div className="container">
       <link rel="stylesheet" type="text/css" href="/style.css" />
 
       <h2 class="main">Add a new Password</h2>
 
-      <div class="form-group field">
-        <label class="main">Name Of Website:</label>
-        <input type="text" class="form-control" required />
+      <div class="form">
+        <label className="name">Name Of Website: </label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Name of Website"
+          required
+          defaultValue={newPassword.nameofwebsite}
+          onChange={(e) => {
+            const password = newPassword;
+            password.nameofwebsite = e.target.value;
+            setNewPassword(password);
+          }}
+        />
       </div>
 
-      <div class="form-group field">
-        <label>Username:</label>
+      <div class="form">
+        <label className="name">Username: </label>
         <input
           type="text"
           id="username"
           name="username"
+          placeholder="Username"
           required
           class="form-control"
+          defaultValue={newPassword.username}
+          onChange={(e) => {
+            const password = newPassword;
+            password.username = e.target.value;
+            setNewPassword(password);
+          }}
         />
       </div>
 
-      <div class="form-group field">
-        <label for="img">Password:</label>
+      <div class="form">
+        <label className="name">Password: </label>
         <input
           type="text"
           id="password"
           name="password"
+          placeholder="Password"
           required
           class="form-control"
+          defaultValue={newPassword.password}
+          onChange={(e) => {
+            const password = newPassword;
+            password.password = e.target.value;
+            setNewPassword(password);
+          }}
         />
       </div>
 
-      <div class="form-group field">
-        <label for="img">Link to Reset Password:</label>
-        <input type="text" id="link" name="link" class="form-control" />
+      <div className="col-md-3 center">
+        <label className="name">Link to Reset Password: </label>
+        <input
+          type="text"
+          id="link"
+          name="link"
+          placeholder="Link To Reset"
+          class="form-control"
+          defaultValue={newPassword.linktoreset}
+          onChange={(e) => {
+            const password = newPassword;
+            password.linktoreset = e.target.value;
+            setNewPassword(password);
+          }}
+        />
       </div>
 
-      <input type="submit" class="btn btn-primary" />
-
-      <a href="/" class="btn btn-secondary">
+      <button className="btn" onClick={() => createFunction()}>
+        Create Password
+      </button>
+      <button className="btn" onClick={() => navigate("/homepage")}>
         Cancel
-      </a>
+      </button>
     </div>
   );
 }

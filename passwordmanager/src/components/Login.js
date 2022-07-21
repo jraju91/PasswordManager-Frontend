@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { signIn } from "../api/index";
 import { useNavigate } from "react-router-dom";
-
+import { LockClosedIcon } from "@heroicons/react/solid";
 import { Button, Form } from "react-bootstrap";
+import "./style.css";
 
 function Login() {
   const navigate = useNavigate();
@@ -11,7 +12,7 @@ function Login() {
   const [error, setError] = useState();
 
   return (
-    <div>
+    <div className="container">
       <h1>Login Page</h1>
       <div style={{ color: "red" }}>{error}</div>
       <Form
@@ -24,20 +25,24 @@ function Login() {
           signIn(formData)
             .then((data) => {
               console.log(data);
-              // setCookie that login succeded follow project 3 (search for localstorage.setItem)
+              console.log("in then block");
+              localStorage.setItem("user", JSON.stringify(data.data.user));
               setError("");
+              navigate("/homepage");
             })
             .catch((error) => {
               console.log(error);
+              console.log("in catch block");
               setError(error.response.data.message);
             });
         }}
       >
         <Form.Group controlId="formBasicEmail">
-          <Form.Label>Email address</Form.Label>
+          <Form.Label>Email Address: </Form.Label>
           <Form.Control
+            className="form"
             type="email"
-            placeholder="Enter email"
+            placeholder="Enter Email"
             value={email}
             onChange={(e) => {
               setEmail(e.target.value);
@@ -46,10 +51,11 @@ function Login() {
         </Form.Group>
 
         <Form.Group controlId="formBasicPassword">
-          <Form.Label>Password</Form.Label>
+          <Form.Label>Password: </Form.Label>
           <Form.Control
+            className="form"
             type="password"
-            placeholder="Password"
+            placeholder="Enter Password"
             value={password}
             onChange={(e) => {
               setPassword(e.target.value);
@@ -57,9 +63,10 @@ function Login() {
           />
         </Form.Group>
         <Button
+          className="btn"
           variant="primary"
           type="submit"
-          onClick={() => navigate("/homepage")}
+          onClick={() => signIn()}
         >
           Submit
         </Button>

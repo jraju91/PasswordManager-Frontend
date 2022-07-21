@@ -11,12 +11,15 @@ API.interceptors.request.use((req) => {
   return req;
 });
 
-export const getpasswords = () => API.get("/password");
+export const getpasswords = async (userId) =>
+  await API.get(`/password?userId=${userId}`);
 
 export const getpassword = (id) => API.get(`/password/${id}`);
 
-export const createpassword = (createPassword) =>
-  API.post("/password", createPassword);
+export const createpassword = async (createPassword) => {
+  console.log(createPassword);
+  await API.post("/password", createPassword);
+};
 
 export const updatepassword = (updatedPassword) => {
   console.log(updatedPassword);
@@ -32,4 +35,6 @@ export const signIn = (formData) => {
   return API.post("/auth/signin", formData);
 };
 
-export const signUp = (formData) => API.post("/auth/signup", formData);
+export const signUp = async (formData) => {
+  await API.post("/auth/signup", formData);
+};
