@@ -6,9 +6,10 @@ const Navbar = () => {
   const userId = JSON.parse(localStorage.getItem("user"));
   const [loggedIn, setLoggedIn] = useState(false);
   const navigate = useNavigate();
+
   const logout = () => {
     localStorage.removeItem("user");
-
+    setLoggedIn(false);
     navigate("/login");
   };
   useEffect(() => {
@@ -19,6 +20,9 @@ const Navbar = () => {
   // const changeLoginButton = () => {
   //   setLoggedIn(true);
   // };
+  // const loggedout = () => {
+
+  // }
 
   return (
     <>

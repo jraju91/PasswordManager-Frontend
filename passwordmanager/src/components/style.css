@@ -10,6 +10,12 @@ body {
   background-size: cover;
 }
 
+.name {
+  display: inline;
+  margin-right: 65px;
+  /* justify-content: flex-end; */
+}
+
 .form {
   font-family: "Mochiy Pop One", sans-serif;
   padding-right: 20px;

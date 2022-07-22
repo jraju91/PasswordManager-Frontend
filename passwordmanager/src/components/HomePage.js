@@ -12,7 +12,8 @@ function HomePage() {
     // e.preventDefault();
     console.log("hello");
     deletepassword(id).then(() => {
-      navigate("/homepage");
+      getpasswords();
+      // navigate("/homepage");
     });
   };
   useEffect(() => {
@@ -25,15 +26,18 @@ function HomePage() {
     <div className="container">
       <div>
         <h1>My Passwords</h1>
+        <div>
+          <h3 className="name">Name of Website</h3>
+          <h3 className="name">Username</h3>
+          <h3 className="name">Password</h3>
+          <h3 className="name">Link to Reset</h3>
+        </div>
         <section>
           {passwords.map((password) => (
             <div>
-              {/* change out of form into div/span */}
               <div>
-                {/* <FloatingLabel> */}
-                {/* Name of Website */}
                 <input className="form" value={password.nameofwebsite} />
-                {/* </FloatingLabel> */}
+
                 <input className="form" value={password.username} />
                 <input
                   className="form"

@@ -1,6 +1,7 @@
 import Axios from "axios";
 
-const API = Axios.create({ baseURL: "http://localhost:3001" });
+// const API = Axios.create({ baseURL: "http://localhost:3001" });
+const API = Axios.create({ baseURL: "https://passwordappjr.herokuapp.com" });
 
 API.interceptors.request.use((req) => {
   if (localStorage.getItem("profile")) {
