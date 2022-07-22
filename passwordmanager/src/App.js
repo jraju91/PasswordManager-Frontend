@@ -8,7 +8,7 @@ import HomePage from "./components/HomePage";
 import AddPassword from "./components/AddPassword";
 import EditPassword from "./components/EditPassword";
 import DeletePassword from "./components/DeletePassword";
-import Show from "./components/Show";
+// import Show from "./components/Show";
 
 import Navbar from "./components/Navbar";
 
@@ -21,7 +21,7 @@ function App() {
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/show" element={<Show />} />
+        {/* <Route path="/show" element={<Show />} /> */}
         <Route path="/homepage" element={<HomePage />} />
         <Route path="/delete/:id" element={<DeletePassword />} />
         <Route path="/signup" element={<Signup />} />

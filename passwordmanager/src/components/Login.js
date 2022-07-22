@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { signIn } from "../api/index";
 import { useNavigate } from "react-router-dom";
-import { LockClosedIcon } from "@heroicons/react/solid";
+
 import { Button, Form } from "react-bootstrap";
 import "./style.css";
 
@@ -13,7 +13,8 @@ function Login() {
 
   return (
     <div className="container">
-      <h1>Login Page</h1>
+      <h1>Password Manager App</h1>
+      <h1>Login</h1>
       <div style={{ color: "red" }}>{error}</div>
       <Form
         onSubmit={(e) => {

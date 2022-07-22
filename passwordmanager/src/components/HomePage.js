@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-// import PasswordForm from "./forms/PasswordForm";
+// import FloatingLabel from "react-bootstrap/FloatingLabel";
 import { useNavigate } from "react-router-dom";
 import { getpasswords, deletepassword } from "../api/index";
 import "./style.css";
@@ -24,13 +24,16 @@ function HomePage() {
   return (
     <div className="container">
       <div>
-        <h1>Current Passwords</h1>
+        <h1>My Passwords</h1>
         <section>
           {passwords.map((password) => (
             <div>
               {/* change out of form into div/span */}
               <div>
+                {/* <FloatingLabel> */}
+                {/* Name of Website */}
                 <input className="form" value={password.nameofwebsite} />
+                {/* </FloatingLabel> */}
                 <input className="form" value={password.username} />
                 <input
                   className="form"

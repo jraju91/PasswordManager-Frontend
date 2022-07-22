@@ -1,8 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import { signUp } from "../api/index";
+// import { signUp } from "../api/index";
 import "./style.css";
+import axios from "axios";
+
+// const API = axios.create({ baseURL: "http://localhost:3001" });
 
 function Signup() {
   const navigate = useNavigate();
@@ -11,31 +14,60 @@ function Signup() {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   // const [error, setError] = useState();
-
+  const signUp = (e) => {
+    e.preventDefault();
+    console.log(firstname);
+    console.log(lastname);
+    const formData = {
+      firstname,
+      lastname,
+      email,
+      password,
+    };
+    console.log(formData);
+    axios
+      .post(`http://localhost:3001/auth/signup`, formData, {
+        headers: { "Content-Type": "application/json" },
+      })
+      .then((data) => {
+        // setlocalstorage same as login
+        console.log(data);
+        // setError("");
+        navigate("/homepage");
+      })
+      .catch((error) => {
+        console.log(error);
+        // setError(error.response.data.message);
+      });
+  };
   return (
     <div className="container">
       <h1>Signup Page</h1>
       <Form
-        onSubmit={(e) => {
-          e.preventDefault();
-          const formData = {
-            firstname,
-            lastname,
-            email,
-            password,
-          };
-          signUp(formData)
-            .then((data) => {
-              // setlocalstorage same as login
-              console.log(data);
-              // setError("");
-              navigate("/homepage");
-            })
-            .catch((error) => {
-              console.log(error);
-              // setError(error.response.data.message);
-            });
-        }}
+        onSubmit={
+          // (e) => {
+          signUp
+          // e.preventDefault();
+          // const formData = {
+          //   firstname,
+          //   lastname,
+          //   email,
+          //   password,
+          // };
+          // console.log(formData);
+          // signUp(formData)
+          //   .then((data) => {
+          //     // setlocalstorage same as login
+          //     console.log(data);
+          //     // setError("");
+          //     navigate("/homepage");
+          //   })
+          //   .catch((error) => {
+          //     console.log(error);
+          //     // setError(error.response.data.message);
+          //   });
+          // }
+        }
       >
         <Form.Group controlId="firstName">
           <Form.Label>First Name: </Form.Label>
@@ -81,7 +113,7 @@ function Signup() {
             }}
           />
         </Form.Group>
-        <Button variant="primary" type="submit" onClick={() => signUp()}>
+        <Button variant="primary" type="submit" onClick={() => Signup()}>
           Submit
         </Button>
         <Button

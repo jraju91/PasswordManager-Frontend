@@ -36,5 +36,7 @@ export const signIn = (formData) => {
 };
 
 export const signUp = async (formData) => {
-  await API.post("/auth/signup", formData);
+  await API.post("/auth/signup", formData, {
+    headers: { "Content-Type": "application/json" },
+  });
 };
