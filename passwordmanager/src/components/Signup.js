@@ -33,7 +33,7 @@ function Signup() {
         // setlocalstorage same as login
         console.log(data);
         // setError("");
-        navigate("/homepage");
+        navigate("/login");
       })
       .catch((error) => {
         console.log(error);
@@ -113,7 +113,7 @@ function Signup() {
             }}
           />
         </Form.Group>
-        <Button variant="primary" type="submit" onClick={() => Signup()}>
+        <Button variant="primary" type="submit" onClick={signUp}>
           Submit
         </Button>
         <Button
