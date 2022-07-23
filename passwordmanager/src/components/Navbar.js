@@ -40,7 +40,7 @@ const Navbar = () => {
         </NavBtn> */}
         {loggedIn ? (
           <NavBtn>
-            <NavBtnLink onClick={() => logout()} to="/login">
+            <NavBtnLink onClick={() => logout()} to="/">
               Logout
             </NavBtnLink>
           </NavBtn>

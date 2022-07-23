@@ -27,7 +27,7 @@ function AddPassword() {
       <h2 class="main">Add a new Password</h2>
 
       <div class="form">
-        <label className="name">Name Of Website: </label>
+        <label className="adding">Name Of Website: </label>
         <input
           type="text"
           class="form-control"
@@ -43,7 +43,7 @@ function AddPassword() {
       </div>
 
       <div class="form">
-        <label className="name">Username: </label>
+        <label className="adding">Username: </label>
         <input
           type="text"
           id="username"
@@ -61,7 +61,7 @@ function AddPassword() {
       </div>
 
       <div class="form">
-        <label className="name">Password: </label>
+        <label className="adding">Password: </label>
         <input
           type="text"
           id="password"
@@ -79,7 +79,7 @@ function AddPassword() {
       </div>
 
       <div className="col-md-3 center">
-        <label className="name">Link to Reset Password: </label>
+        <label className="adding">Link to Reset Password: </label>
         <input
           type="text"
           id="link"

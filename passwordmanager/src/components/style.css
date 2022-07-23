@@ -6,13 +6,16 @@
   font-weight: bold;
 }
 body {
-  background-image: url("../public/images/IMG_4086.jpg");
+  background-image: url("../publics/images/IMG_4086.jpg");
   background-size: cover;
 }
 
 .name {
   display: inline;
   margin-right: 65px;
+  color: red;
+  border: 3px;
+
   /* justify-content: flex-end; */
 }
 

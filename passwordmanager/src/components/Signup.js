@@ -116,11 +116,7 @@ function Signup() {
         <Button variant="primary" type="submit" onClick={signUp}>
           Submit
         </Button>
-        <Button
-          variant="primary"
-          type="submit"
-          onClick={() => navigate("/login")}
-        >
+        <Button variant="primary" type="submit" onClick={() => navigate("/")}>
           Cancel
         </Button>
       </Form>
