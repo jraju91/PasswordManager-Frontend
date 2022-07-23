@@ -33,7 +33,7 @@ function Signup() {
         // setlocalstorage same as login
         console.log(data);
         // setError("");
-        navigate("/login");
+        navigate("/");
       })
       .catch((error) => {
         console.log(error);

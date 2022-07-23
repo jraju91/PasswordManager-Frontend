@@ -10,7 +10,7 @@ const Navbar = () => {
   const logout = () => {
     localStorage.removeItem("user");
     setLoggedIn(false);
-    navigate("/login");
+    navigate("/");
   };
   useEffect(() => {
     if (userId) {
