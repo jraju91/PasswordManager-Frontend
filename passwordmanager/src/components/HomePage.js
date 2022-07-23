@@ -12,7 +12,8 @@ function HomePage() {
     // e.preventDefault();
     console.log("hello");
     deletepassword(id).then(() => {
-      getpasswords();
+      window.location.reload();
+
       // navigate("/homepage");
     });
   };
